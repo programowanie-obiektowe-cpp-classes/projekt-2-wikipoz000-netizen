@@ -1,6 +1,28 @@
-#include "PrintHello.hpp"
+#include <print>
+#include "Czytnik.hpp"
+#include "CDData.hpp"
 
-int main()
-{
-    printHello();
+int main() {
+    try {
+        BazaCD baza;
+
+        // Wczytanie danych z pliku tekstowego lista.txt
+        PlytaCD plyta = CzytnikPliku::wczytajZPliku("./data/lista.txt");
+        baza.dodajPlyte(std::move(plyta));
+
+        // Policzenie statystyki rozszerzen
+        auto statystyki = baza.policzPlikiWedlugRozszerzen();
+
+        std::println("Statystyka plikow wedlug rozszerzen:");
+        for (const auto& [rozszerzenie, ilosc] : statystyki) {
+            std::println("Liczba plikow typu {} : {}", rozszerzenie, ilosc);
+        }
+
+        std::println("");
+        std::println("Laczna liczba plikow: {}",
+            baza.policzWszystkiePliki());
+    }
+    catch (const std::exception& e) {
+        std::println("Blad: {}", e.what());
+    }
 }
