@@ -7,7 +7,7 @@ enum class TypElementu {
     Katalog
 };
 
-//Reprezentuje jeden plik lub katalog
+//Reprezentuje jeden plik
 struct PlikWejsciowy {
     std::string nazwa;                 // nazwa pliku
     TypElementu typ = TypElementu::Plik;

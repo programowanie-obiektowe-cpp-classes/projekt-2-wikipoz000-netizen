@@ -18,6 +18,16 @@ int main() {
             std::println("Liczba plikow typu {} : {}", rozszerzenie, ilosc);
         }
 
+       
+        auto cppPliki = baza.znajdzPlikiZRozszerzeniem(".cpp");
+        std::println("Pliki z rozszerzeniem .cpp:");
+
+        for (const auto& plik : cppPliki)
+        {
+            std::println(" - {}", plik.nazwa);
+        }
+         
+
         std::println("");
         std::println("Laczna liczba plikow: {}",
             baza.policzWszystkiePliki());
